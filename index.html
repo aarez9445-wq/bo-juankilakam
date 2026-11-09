@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>بۆ هەناسە ❤</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 50% 15%,#5a0f35,#1a0510 72%);
+    font-family:Tahoma,Arial,sans-serif;color:#fff;overflow:hidden;text-align:center;
+    user-select:none;-webkit-user-select:none;
+  }
+  .card{
+    position:relative;z-index:2;width:92%;max-width:480px;padding:30px 22px 26px;
+    background:rgba(255,255,255,.07);backdrop-filter:blur(14px);
+    border:1px solid rgba(255,215,140,.45);border-radius:28px;
+    box-shadow:0 0 60px rgba(255,60,120,.4);
+  }
+  .vip{display:inline-block;padding:4px 18px;border-radius:20px;font-size:13px;
+    background:linear-gradient(90deg,#ffd76a,#ff9f43);color:#3a0a1f;font-weight:bold;letter-spacing:2px}
+  h1{font-size:25px;color:#ffd76a;margin:12px 0 4px;text-shadow:0 0 14px rgba(255,215,106,.5)}
+  .hide{display:none!important}
+
+‎  /* ===== هەنگاوی ١: پەنجە مۆر ===== */
+  .sub{color:#ffb3c9;font-size:15px;min-height:24px;margin-bottom:10px}
+  .padwrap{position:relative;width:210px;height:250px;margin:6px auto 10px}
+  .ring{position:absolute;inset:-14px;width:calc(100% + 28px);height:calc(100% + 28px);transform:rotate(-90deg)}
+  .ring circle{fill:none;stroke-width:4;stroke-linecap:round}
+  .ring .bg{stroke:rgba(255,255,255,.12)}
+  .ring .fg{stroke:url(#g);stroke-dasharray:0 1000;filter:drop-shadow(0 0 6px #ff3d7f)}
+  .pad{
+    position:absolute;inset:0;border-radius:42% 42% 38% 38%/34% 34% 44% 44%;
+    background:radial-gradient(circle at 50% 40%,rgba(255,61,127,.2),rgba(0,0,0,.35));
+    border:2px solid rgba(255,215,140,.55);overflow:hidden;cursor:pointer;touch-action:none;
+    box-shadow:inset 0 0 30px rgba(255,61,127,.35),0 0 30px rgba(255,61,127,.25);
+    transition:box-shadow .3s,transform .2s;
+  }
+  .pad svg{width:100%;height:100%}
+  .pad path,.pad ellipse{fill:none;stroke:rgba(255,215,140,.55);stroke-width:3.2;stroke-linecap:round;transition:stroke .4s}
+  .pad.holding{transform:scale(.97);box-shadow:inset 0 0 50px rgba(255,61,127,.7),0 0 50px rgba(255,61,127,.7)}
+  .pad.holding path,.pad.holding ellipse{stroke:#ff6b9a}
+  .pad.ok path,.pad.ok ellipse{stroke:#ffd76a}
+  .scan{position:absolute;left:0;right:0;height:46px;top:-46px;opacity:0;
+    background:linear-gradient(180deg,transparent,rgba(255,215,106,.55),transparent)}
+  .pad.holding .scan{opacity:1;animation:scan 1.3s linear infinite}
+  @keyframes scan{to{top:100%}}
+  .ripple{position:absolute;border:2px solid #ff3d7f;border-radius:50%;pointer-events:none;
+    left:50%;top:52%;width:60px;height:60px;margin:-30px;animation:rip 1s ease-out forwards}
+  @keyframes rip{to{transform:scale(4.5);opacity:0}}
+  canvas{width:100%;height:80px;display:block;margin:6px 0 0}
+  .bpm{color:#ffd76a;font-size:15px;margin-top:2px;min-height:22px}
+  .bpm b{font-size:22px}
+
+‎  /* ===== هەنگاوی ٢: پەیامەکان ===== */
+  .heart{font-size:74px;display:block;margin:6px 0 0;cursor:pointer;
+    filter:drop-shadow(0 0 18px #ff2d6f);animation:beat 1.2s infinite}
+  @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.28)}30%{transform:scale(1)}45%{transform:scale(1.2)}}
+  .pulse{animation:big .6s}
+  @keyframes big{0%{transform:scale(1)}40%{transform:scale(1.6) rotate(-8deg)}100%{transform:scale(1)}}
+  .step{color:#ffb3c9;font-size:14px;margin-bottom:6px}
+  .bar{height:5px;border-radius:5px;background:rgba(255,255,255,.15);margin:10px 4px 16px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff3d7f,#ffd76a);transition:width .6s}
+  #msg{min-height:150px;display:flex;align-items:center;justify-content:center;font-size:19px;line-height:2.1;padding:0 6px}
+  button{margin-top:14px;padding:14px 38px;border:none;border-radius:30px;cursor:pointer;font-size:17px;
+    color:#fff;background:linear-gradient(90deg,#ff3d7f,#ff7a59);box-shadow:0 6px 22px rgba(255,61,127,.55);
+    transition:.3s;font-family:inherit}
+  button:hover{transform:scale(1.08)}
+  button:disabled{opacity:.4;cursor:default;transform:none}
+  .sign{margin-top:12px;color:#ffd76a;font-size:15px;min-height:22px}
+  .fall{position:fixed;z-index:1;pointer-events:none;animation:up linear forwards}
+  @keyframes up{from{transform:translateY(0) scale(.6);opacity:1}
+    to{transform:translateY(-110vh) rotate(25deg) scale(1.2);opacity:0}}
+  .fadein{animation:fi 1s}
+  @keyframes fi{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <span class="vip">★ VIP ★</span>
+  <h1 id="title"></h1>
+
+‎  <!-- هەنگاوی ١ -->
+  <section id="s1">
+    <div class="sub" id="status">پەنجەت لەسەر مۆرەکە دابنێ و ڕایبگرە 👆</div>
+    <div class="padwrap">
+      <svg class="ring" viewBox="0 0 100 100">
+        <defs><linearGradient id="g"><stop offset="0" stop-color="#ff3d7f"/><stop offset="1" stop-color="#ffd76a"/></linearGradient></defs>
+        <circle class="bg" cx="50" cy="50" r="48" pathLength="100"/>
+        <circle class="fg" id="fg" cx="50" cy="50" r="48" pathLength="100"/>
+      </svg>
+      <div class="pad" id="pad">
+        <svg viewBox="0 0 200 250">
+          <path d="M40 120 Q40 40 100 40 Q160 40 160 120"/>
+          <path d="M55 125 Q55 55 100 55 Q145 55 145 125" stroke-dasharray="70 6 30 6"/>
+          <path d="M70 130 Q70 70 100 70 Q130 70 130 130"/>
+          <path d="M85 135 Q85 85 100 85 Q115 85 115 135" stroke-dasharray="40 5 20"/>
+          <ellipse cx="100" cy="150" rx="12" ry="30"/>
+          <path d="M30 150 Q30 205 80 228" />
+          <path d="M45 150 Q45 195 85 215" stroke-dasharray="50 6 20"/>
+          <path d="M60 155 Q60 185 90 200"/>
+          <path d="M170 150 Q170 205 120 228"/>
+          <path d="M155 150 Q155 195 115 215" stroke-dasharray="50 6 20"/>
+          <path d="M140 155 Q140 185 110 200"/>
+          <path d="M100 185 L100 215" stroke-dasharray="14 6"/>
+        </svg>
+        <div class="scan"></div>
+      </div>
+    </div>
+    <canvas id="ecg" width="440" height="160"></canvas>
+    <div class="bpm" id="bpm"></div>
+  </section>
+
+‎  <!-- هەنگاوی ٢ -->
+  <section id="s2" class="hide">
+    <span class="heart" id="heart">❤</span>
+    <div class="step" id="stepTxt"></div>
+    <div class="bar"><i id="fill"></i></div>
+    <div id="msg"></div>
+    <button id="btn" onclick="next()">دەستپێبکە 💌</button>
+    <div class="sign" id="sign"></div>
+  </section>
+</div>
+
+<script>
+/* ===== CONFIG: ئەمە بگۆڕە ===== */
+const HER = "هەناسە";
+const ME  = "ناوی تۆ";
+const HOLD_MS = 4000;
+const MESSAGES = [
+‎  "سڵاو هەناسە 🌹 ئەم لاپەڕەیە تەنیا بۆ تۆیە، کەس تر مافی بینینی نییە.",
+‎  "هەناسە، ناوەکەت تەنیا ناو نییە، ناوی ئەو شتەیە کە بێ ئەو ناتوانم بژیم.",
+‎  "هەر کاتێک ناوت دەبیستم، دڵم وەک یەکەم ڕۆژ دەلەرزێت 💓",
+‎  "تۆ ئەو ڕووناکییەی کە لە تاریکترین ڕۆژانیشدا ڕێگام نیشان دەدەیت ✨",
+‎  "بزەکەت لە هەموو دیاریی دونیا بەنرخترە، هەمیشە بزە بکە.",
+‎  "ئەگەر ئاسمان بکرێت بە کاغەز و دەریاکان بە مەرەکەب، هێشتا ناتوانم بنووسم چەند خۆشم دەوێیت.",
+‎  "لەگەڵ تۆ ڕۆژە ئاساییەکانیش دەبنە جوانترین یادگاری 🌙",
+‎  "بەڵێن دەدەم لە خۆشی و ناخۆشیدا لەتەک تۆ بم، هەرگیز دەستت بەرنەدەم.",
+‎  "تۆ تەنیا خۆشەویستم نیت، تۆ هاوڕێ و ئارامی و ماڵی منیت 🏡",
+‎  "هەناسە، خۆشم دەوێیت، ئەمڕۆ و سبەی و هەتا هەتایە ❤"
+];
+const FINAL = "تۆ هەناسەی منی، و بێ هەناسە ناژیم ❤";
+/* =============================== */
+
+document.getElementById("title").textContent = "بۆ " + HER + " ✨";
+
+‎/* ---------- دەنگی ترپەی دڵ (دروستکراو، بێ فایل) ---------- */
+let AC = null;
+function audio(){
+  if(!AC) AC = new (window.AudioContext || window.webkitAudioContext)();
+  if(AC.state === "suspended") AC.resume();
+  return AC;
+}
+function thump(delay, vol){
+  const ac = audio(), t = ac.currentTime + delay;
+  const o = ac.createOscillator(), o2 = ac.createOscillator(), g = ac.createGain();
+  o.type = "sine"; o2.type = "triangle";
+  o.frequency.setValueAtTime(75, t);  o.frequency.exponentialRampToValueAtTime(38, t + .16);
+  o2.frequency.setValueAtTime(130, t); o2.frequency.exponentialRampToValueAtTime(60, t + .12);
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(vol, t + .02);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + .24);
+  o.connect(g); o2.connect(g); g.connect(ac.destination);
+  o.start(t); o2.start(t); o.stop(t + .3); o2.stop(t + .3);
+}
+function lubdub(){ thump(0, .95); thump(.2, .6); }
+
+‎/* ---------- ترپەی دڵ + هێڵی ECG ---------- */
+const cv = document.getElementById("ecg"), cx = cv.getContext("2d");
+const pad = document.getElementById("pad"), fg = document.getElementById("fg");
+const statusEl = document.getElementById("status"), bpmEl = document.getElementById("bpm");
+let holding = false, startT = 0, lastBeat = 0, beatT = -9999, done = false, raf = 0;
+const buf = new Array(220).fill(0);
+
+function spike(p){            // p = میلی چرکە لە ترپەی کۆتاییەوە
+  if(p < 50)  return p / 50 * 0.9;
+  if(p < 100) return 0.9 - (p - 50) / 50 * 1.9;
+  if(p < 150) return -1 + (p - 100) / 50 * 1;
+  if(p > 220 && p < 330) return Math.sin((p - 220) / 110 * Math.PI) * 0.4;
+  return 0;
+}
+function draw(now){
+  buf.shift();
+  const v = holding ? spike(now - beatT) : 0;
+  buf.push(v + (Math.random() - .5) * .02);
+  cx.clearRect(0, 0, cv.width, cv.height);
+  cx.lineWidth = 3; cx.lineJoin = "round";
+  cx.strokeStyle = holding ? "#ff3d7f" : "rgba(255,215,140,.4)";
+  cx.shadowColor = "#ff3d7f"; cx.shadowBlur = holding ? 12 : 0;
+  cx.beginPath();
+  buf.forEach((y, i) => {
+    const X = i / (buf.length - 1) * cv.width, Y = cv.height / 2 - y * cv.height * .36;
+    i ? cx.lineTo(X, Y) : cx.moveTo(X, Y);
+  });
+  cx.stroke();
+}
+function ripple(){
+  const r = document.createElement("div");
+  r.className = "ripple";
+  pad.appendChild(r);
+  setTimeout(() => r.remove(), 1000);
+}
+function loop(now){
+  raf = requestAnimationFrame(loop);
+  if(holding && !done){
+    const prog = Math.min((now - startT) / HOLD_MS, 1);
+    const interval = 900 - prog * 280;                 // ترپەکە خێراتر دەبێت
+    if(now - lastBeat > interval){
+      lastBeat = now; beatT = now;
+      lubdub(); ripple(); burst(2);
+      if(navigator.vibrate) navigator.vibrate([60, 60, 40]);
+    }
+    fg.style.strokeDasharray = (prog * 100) + " 1000";
+    const bpm = Math.round(60000 / interval);
+    bpmEl.innerHTML = "ترپەی دڵ: <b>" + bpm + "</b> BPM 💓";
+    statusEl.textContent = "دڵت دەخوێنمەوە... " + Math.round(prog * 100) + "%";
+    if(prog >= 1) success();
+  }
+  draw(now);
+}
+function press(e){
+  e.preventDefault();
+  if(done) return;
+  audio();
+  holding = true; startT = performance.now(); lastBeat = 0;
+  pad.classList.add("holding");
+}
+function release(){
+  if(done || !holding) return;
+  holding = false;
+  pad.classList.remove("holding");
+  fg.style.strokeDasharray = "0 1000";
+  bpmEl.textContent = "";
+  statusEl.textContent = "زوو دەستت هەڵگرت! دووبارە دایبنێ 👆";
+}
+["pointerdown"].forEach(ev => pad.addEventListener(ev, press));
+["pointerup","pointerleave","pointercancel"].forEach(ev => pad.addEventListener(ev, release));
+pad.addEventListener("contextmenu", e => e.preventDefault());
+
+function success(){
+  done = true; holding = false;
+  pad.classList.remove("holding"); pad.classList.add("ok");
+  fg.style.strokeDasharray = "100 1000";
+  statusEl.textContent = "✔ ناسنامەی دڵ پشتڕاستکرایەوە: " + HER;
+  bpmEl.innerHTML = "<b>❤</b> ئەم دڵە تەنیا بۆ تۆ دەترپێت";
+  thump(0, 1); thump(.2, .7); thump(.6, 1); thump(.8, .7);
+  if(navigator.vibrate) navigator.vibrate([200, 80, 200]);
+  burst(70);
+  setTimeout(() => {
+    document.getElementById("s1").classList.add("hide");
+    const s2 = document.getElementById("s2");
+    s2.classList.remove("hide"); s2.classList.add("fadein");
+  }, 2600);
+}
+raf = requestAnimationFrame(loop);
+
+‎/* ---------- دڵی بەرزبووەوە ---------- */
+const icons = ["❤","💖","💗","💕","🌹","✨","💘"];
+function rise(){
+  const s = document.createElement("span");
+  s.className = "fall";
+  s.textContent = icons[Math.floor(Math.random() * icons.length)];
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.bottom = "-30px";
+  s.style.fontSize = (14 + Math.random() * 28) + "px";
+  s.style.animationDuration = (4 + Math.random() * 5) + "s";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 9500);
+}
+setInterval(rise, 450);
+function burst(n){ for(let k = 0; k < n; k++) setTimeout(rise, k * 45); }
+
+‎/* ---------- هەنگاوی ٢: پەیامەکان ---------- */
+const msgEl = document.getElementById("msg"), btn = document.getElementById("btn"), heart = document.getElementById("heart");
+let idx = -1, timer = null;
+function beatNow(){ heart.classList.remove("pulse"); void heart.offsetWidth; heart.classList.add("pulse"); }
+heart.onclick = () => { beatNow(); lubdub(); burst(12); };
+
+function typeText(text, cb){
+  clearInterval(timer); msgEl.textContent = ""; btn.disabled = true;
+  let i = 0;
+  timer = setInterval(() => {
+    msgEl.textContent += text[i++];
+    if(i >= text.length){ clearInterval(timer); btn.disabled = false; if(cb) cb(); }
+  }, 50);
+}
+function next(){
+  idx++; beatNow(); burst(18); lubdub();
+  if(idx < MESSAGES.length){
+    document.getElementById("stepTxt").textContent = "پەیامی " + (idx + 1) + " لە " + MESSAGES.length;
+    document.getElementById("fill").style.width = ((idx + 1) / MESSAGES.length * 100) + "%";
+    btn.textContent = (idx === MESSAGES.length - 1) ? "سووپرایزی کۆتایی 🎁" : "دواتر 💗";
+    typeText(MESSAGES[idx]);
+  } else {
+    btn.style.display = "none";
+    document.getElementById("stepTxt").textContent = "کۆتایی، بەڵام خۆشەویستی بەردەوامە";
+    msgEl.style.color = "#ffd76a"; msgEl.style.fontSize = "24px";
+    typeText(FINAL, () => {
+      document.getElementById("sign").textContent = "— " + ME + " 💍";
+      burst(90); setInterval(() => burst(10), 1500);
+    });
+  }
+}
+</script>
+</body>
+</html>
+
